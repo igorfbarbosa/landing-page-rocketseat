@@ -9,17 +9,13 @@ interface ActiveLinkProps extends LinkProps {
 
 export function ActiveLink({ children, href, ...props }: ActiveLinkProps) {
   const router = useRouter()
-  const isCurrentPath =
-    router.asPath === href ||
-    router.asPath === props.as ||
-    router.asPath.startsWith(String(props.as))
-
+  const isCurrentPath = router.asPath === href || router.asPath === props.as
   return (
     <Link
       href={href}
       className={cn(
-        'text-sm font-medium transition-colors hover:text-blue-500',
-        isCurrentPath ? 'text-blue-500' : 'text-muted-foreground'
+        'text-action-sm transition-colors hover:text-blue-200',
+        isCurrentPath ? 'text-blue-200' : 'text-gray-100'
       )}
     >
       {children}
